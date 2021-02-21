@@ -1,6 +1,7 @@
 const express = require('express');
 const fileUpload = require('express-fileupload');
 const app = express();
+require('dotenv/config')
 app.use(fileUpload());
 app.set('view engine', 'ejs');
 app.get('/', (req, res) => {
@@ -22,6 +23,6 @@ app.post('/', (req, res) => {
         res.send('There are no files')
     }
 })
-app.listen(5000, () => {
-    console.log('server started')
-})
+app.listen(process.env.PORT, () => {
+    console.log(`App listens to port ${process.env.PORT}`);
+});
